@@ -1,0 +1,1062 @@
+FLUXORA
+
+Smarter Energy for a Sustainable Tomorrow
+
+PS08 — ENERGY FOR THE NEXT BILLION
+
+COMPLETE FULL-STACK WEBSITE + BACKEND + AI + IOT MASTER BUILD SPECIFICATION
+
+
+Important: This is the implementation master specification. It expands the supplied Fluxora concept into the complete website, backend, data pipeline, ML, optimization, action and savings-verification workflow. Simulated values must always be labeled.
+
+
+LAYER — REQUIRED IMPLEMENTATION
+
+Brand: Fluxora
+
+Headline: Smarter Energy for a Sustainable Tomorrow
+
+Frontend: React executive dashboard
+
+Backend: Python FastAPI
+
+Telemetry: ESP32 / smart meter / CT sensor; MQTT or HTTP
+
+Data: InfluxDB-compatible time series + PostgreSQL application data
+
+AI/ML: XGBoost/forecasting baseline + Isolation Forest anomaly detection
+
+Optimization: Load shifting, battery and EV scheduling
+
+Workflow: Sense -> Stream -> Store -> Clean -> Learn -> Optimize -> Act -> Measure -> Feedback
+
+
+
+
+========================================================================
+SOURCE PDF PAGE 1
+========================================================================
+
+PS08 — ENERGY FOR THE NEXT BILLION
+FLUXORA
+Smarter Energy for a Sustainable Tomorrow
+COMPLETE FULL-STACK WEBSITE + BACKEND + AI + IOT MASTER BUILD
+SPECIFICATION
+Important: This is the implementation master specification. It expands the supplied Fluxora
+concept into the complete website, backend, data pipeline, ML, optimization, action and
+savings-verification workflow. Simulated values must always be labeled.
+LAYER
+REQUIRED IMPLEMENTATION
+Brand
+Fluxora
+Headline
+Smarter Energy for a Sustainable Tomorrow
+Frontend
+React executive dashboard
+Backend
+Python FastAPI
+Telemetry
+ESP32 / smart meter / CT sensor; MQTT or HTTP
+Data
+InfluxDB-compatible time series + PostgreSQL application data
+AI/ML
+XGBoost/forecasting baseline + Isolation Forest anomaly detection
+Optimization
+Load shifting, battery and EV scheduling
+Workflow
+Sense → Stream → Store → Clean → Learn → Optimize → Act →
+Measure → Feedback
+The supplied reference defines Fluxora as an actionable energy-intelligence system rather than passive
+monitoring. It describes telemetry ingestion, ML forecasting/anomaly detection, optimization and savings
+measurement, and a ten-stage operational flow. This specification follows that direction.
+
+
+========================================================================
+SOURCE PDF PAGE 2
+========================================================================
+
+01 — PRODUCT IDENTITY
+Brand
+The website name is Fluxora. Do not use EnergyX, EnerGrid, PowerPulse or any previous placeholder name.
+Headline
+Use Smarter Energy for a Sustainable Tomorrow as the primary marketing/product headline.
+Positioning
+Fluxora converts energy telemetry into actionable operating decisions.
+Core promise
+Detect what is happening, predict what is next, recommend the best action, optimize flexible loads, execute
+approved actions, and verify the result.
+
+
+========================================================================
+SOURCE PDF PAGE 3
+========================================================================
+
+02 — PS08 PROBLEM
+Invisible waste
+The supplied concept identifies invisible energy waste caused by unmonitored HVAC, lighting and empty
+facilities.
+Passive monitoring
+Legacy meters may only preserve historical information without telling an operator what to do next.
+Maintenance
+Equipment can continue operating in degraded conditions until failure, increasing energy and emergency
+costs.
+Renewable under-use
+Solar, batteries and flexible loads can be operated without coordinated timing.
+Design consequence
+Fluxora must connect every major detection to a decision or action path.
+
+
+========================================================================
+SOURCE PDF PAGE 4
+========================================================================
+
+03 — TARGET USERS
+Energy manager
+Needs current demand, predicted peak, cost, renewable contribution, anomalies and recommended actions.
+Facility operator
+Needs device-level information, alerts, control actions and maintenance signals.
+Decision maker
+Needs verified savings, monthly reports, carbon impact and ROI-oriented evidence.
+Future market
+The reference identifies campuses, IT/corporate parks, hospitals, commercial complexes and municipal
+smart-city districts as target contexts.
+
+
+========================================================================
+SOURCE PDF PAGE 5
+========================================================================
+
+04 — PRODUCT PRINCIPLES
+Actionable
+Do not stop at charts. Produce an action when the data supports one.
+Explainable
+Show why a forecast, anomaly or recommendation exists.
+Measurable
+Separate estimated impact from measured/verified impact.
+Safe
+Human approval is the default for control actions in the prototype.
+Honest
+Never present simulated telemetry as real deployment data.
+Maintainable
+Separate UI, API, business logic, ML and optimization services.
+
+
+========================================================================
+SOURCE PDF PAGE 6
+========================================================================
+
+05 — VISUAL DESIGN DIRECTION
+Human-designed
+The interface must not look like a generic AI-generated dashboard.
+Avoid
+Excessive neon, glowing borders, purple AI gradients, giant gradient text, glassmorphism everywhere,
+decorative AI robots, animated blobs and meaningless 3D elements.
+Use
+Professional energy/industrial visual language, restrained green/teal accents, neutral surfaces, readable
+typography, subtle borders and purposeful whitespace.
+Data first
+Operational numbers, warnings and recommended actions must visually dominate decorative elements.
+
+
+========================================================================
+SOURCE PDF PAGE 7
+========================================================================
+
+06 — BRAND SYSTEM
+Typography
+Use one strong sans-serif family with consistent weights.
+Semantic colors
+Green = renewable/positive impact; neutral = normal; amber = warning; red = critical. Add text/icons so color
+is never the only signal.
+Icons
+Use one icon family consistently.
+Spacing
+Use a fixed spacing scale and reusable components.
+Logo
+Use a simple Fluxora wordmark/mark; do not invent unrelated logos on every page.
+
+
+========================================================================
+SOURCE PDF PAGE 8
+========================================================================
+
+07 — SITE MAP
+Core pages
+Dashboard, Live Energy, Forecasts, Anomalies, Optimization, Devices, Renewable, Alerts, Savings, Reports,
+Settings.
+Authentication
+Login and optional registration/admin user management.
+Entity routes
+Device detail, anomaly detail, recommendation/action detail and report detail should have stable routes.
+Navigation
+Desktop sidebar + top context bar; mobile drawer.
+
+
+========================================================================
+SOURCE PDF PAGE 9
+========================================================================
+
+08 — DASHBOARD
+Headline metrics
+Live Load, 24–48h Forecast Peak, Solar Generation, Projected Saving, Energy Today, Estimated Cost, Peak
+Demand and Carbon Impact.
+Main chart
+Measured demand and forecast demand must be visually distinct.
+Prescriptive alert
+Display the highest-priority recommended action with evidence and estimated impact.
+System state
+Show grid, solar, battery and EV/load status where available.
+No fake values
+All visible metrics must come from APIs or clearly labeled simulation data.
+
+
+========================================================================
+SOURCE PDF PAGE 10
+========================================================================
+
+09 — LIVE ENERGY
+Telemetry
+Display voltage, current, active power, energy, power factor and frequency when available.
+Sources
+Grid, solar, battery, EV and other device/load sources.
+Refresh
+Use polling for MVP or WebSocket/SSE for real-time behavior.
+Staleness
+Show the last-seen timestamp and stale/offline state for devices.
+Traceability
+Every displayed value must map to a source/device and timestamp.
+
+
+========================================================================
+SOURCE PDF PAGE 11
+========================================================================
+
+10 — HISTORICAL ENERGY
+Intervals
+Raw readings plus server-side aggregation for 5-minute, hourly, daily and monthly views.
+Filters
+Date range, site, zone, device, category and source.
+Comparison
+Current period vs comparable previous period.
+Units
+kW = power; kWh = energy. Keep these units correct everywhere.
+Integrity
+Energy accumulation must be mathematically consistent with power and elapsed time.
+
+
+========================================================================
+SOURCE PDF PAGE 12
+========================================================================
+
+11 — DEVICE MANAGEMENT
+Device list
+Name, type, zone, status, rated power, current power, today's energy, last seen and controllability.
+Types
+HVAC/AC, lighting, fan, pump, motor, chiller, refrigerator, water heater, EV charger, solar inverter, battery and
+other.
+Controls
+Only show controls for controllable/simulated devices.
+Audit
+Every command creates an event containing actor, requested command, result and timestamp.
+
+
+========================================================================
+SOURCE PDF PAGE 13
+========================================================================
+
+12 — DEVICE DETAIL
+Trend
+Power and energy history.
+Baseline
+Normal operating profile.
+Health
+Last-seen status, sensor quality and repeated deviations.
+Anomaly history
+Link previous anomaly events.
+Action
+Show safe available commands or maintenance recommendations.
+
+
+========================================================================
+SOURCE PDF PAGE 14
+========================================================================
+
+13 — RENEWABLE MODULE
+Solar
+Generation, self-consumption, grid import and export.
+Battery
+State of charge, charge/discharge power and dispatch state when modeled.
+EV
+Charging demand and target completion time.
+Coordination
+Optimization can shift flexible loads toward solar availability.
+Truthfulness
+Simulated solar/battery values must be labeled.
+
+
+========================================================================
+SOURCE PDF PAGE 15
+========================================================================
+
+14 — ALERT SYSTEM
+Types
+Peak risk, abnormal load, phantom night load, device degradation, sensor offline, renewable under-use, tariff
+opportunity and system faults.
+Severity
+Critical, high, medium, low/info.
+Evidence
+Show source device, detection time, baseline and evidence window.
+Lifecycle
+Open → acknowledged → actioned → resolved.
+Persistence
+Alerts are stored in the database and are not merely frontend notifications.
+
+
+========================================================================
+SOURCE PDF PAGE 16
+========================================================================
+
+15 — FORECASTING
+Horizon
+The reference calls for 24–48 hour demand forecasting.
+Model
+Use XGBoost as a primary supervised option when features are available; use a transparent baseline such as
+moving average/regression/Prophet for comparison.
+Features
+Historical load, hour, day, occupancy/class schedule, weather/temperature and other available context.
+Output
+Timestamped forecast curve plus model/version information.
+Action link
+A predicted peak should be able to trigger optimization recommendations.
+
+
+========================================================================
+SOURCE PDF PAGE 17
+========================================================================
+
+16 — ANOMALY DETECTION
+Model
+Use Isolation Forest as the primary anomaly-detection approach described by the reference.
+Targets
+Spikes, unusual device behavior, equipment degradation patterns and phantom night loads.
+Features
+Power, time-of-day, rolling baseline, device category and contextual data.
+Output
+Score, severity, device/source, evidence window and recommended next step.
+False positives
+Use thresholds and minimum duration so normal variation is not treated as a fault.
+
+
+========================================================================
+SOURCE PDF PAGE 18
+========================================================================
+
+17 — FEATURE ENGINEERING
+Time
+Hour, day-of-week, weekday/weekend, holiday if available.
+Occupancy
+Class schedules, facility operating hours or occupancy proxy.
+Environment
+Temperature/weather where available.
+Load
+Lag values, rolling mean, rolling standard deviation, peak indicators and device contribution.
+Quality
+Features must carry data-quality information so missing/stale telemetry does not silently corrupt predictions.
+
+
+========================================================================
+SOURCE PDF PAGE 19
+========================================================================
+
+18 — DATA CLEANING
+Validation
+Reject impossible sensor values using configured ranges.
+Nulls
+Mark missing intervals and record whether interpolation was used.
+Smoothing
+Use controlled smoothing for noise without hiding genuine peaks.
+Outliers
+Distinguish sensor faults from real energy events.
+Audit
+Store quality flags and processing metadata.
+
+
+========================================================================
+SOURCE PDF PAGE 20
+========================================================================
+
+19 — TELEMETRY INGESTION
+Input
+ESP32/smart meter telemetry via MQTT or HTTP.
+Payload
+Device ID, timestamp, voltage, current, active power, energy, power factor and optional temperature.
+Authentication
+Validate the device or gateway before accepting data.
+Normalization
+Normalize timestamp, units and field names.
+Reliability
+Handle duplicate, delayed and missing packets.
+
+
+========================================================================
+SOURCE PDF PAGE 21
+========================================================================
+
+20 — FASTAPI BACKEND
+Framework
+Use Python FastAPI as the primary application backend, matching the supplied reference.
+Responsibilities
+Authentication, telemetry ingestion, device APIs, analytics, ML inference, optimization, recommendations,
+actions, savings and reports.
+Architecture
+Routers → schemas → services → repositories/models → ML/optimization services.
+Rule
+Do not put all business logic in main.py.
+
+
+========================================================================
+SOURCE PDF PAGE 22
+========================================================================
+
+21 — BACKEND FOLDER STRUCTURE
+Structure
+Use a modular structure separating API, schemas, models, repositories, services, ML, optimization, ingestion,
+workers and tests.
+backend/ ■■■ app/ ■ ■■■ main.py ■ ■■■ core/ # config, security, logging ■ ■■■ api/ # auth, telemetry, devices,
+analytics ■ ■■■ schemas/ # Pydantic request/response models ■ ■■■ models/ # PostgreSQL models ■ ■■■ repositories/
+# database access ■ ■■■ services/ # business logic ■ ■■■ ingestion/ # MQTT/HTTP telemetry ■ ■■■ ml/ ■ ■ ■■■
+features/ ■ ■ ■■■ forecasting/ ■ ■ ■■■ anomaly/ ■ ■■■ optimization/ ■ ■■■ workers/ ■■■ tests/ ■■■ scripts/ ■■■
+requirements.txt ■■■ .env.example
+
+
+========================================================================
+SOURCE PDF PAGE 23
+========================================================================
+
+22 — API CONTRACT
+Auth
+POST /api/auth/login; POST /api/auth/register; GET /api/auth/me.
+Telemetry
+POST /api/telemetry/readings; GET /api/telemetry/live; GET /api/telemetry/history.
+Devices
+GET/POST /api/devices; GET/PATCH /api/devices/{id}; POST /api/devices/{id}/command.
+Analytics
+GET /api/analytics/load; /cost; /sources; /peak; /carbon.
+AI
+GET /api/forecast; GET /api/anomalies.
+Optimization
+POST /api/optimization/run; GET /api/optimization/recommendations.
+Savings
+GET /api/savings/baseline; GET /api/savings/verified.
+Health
+GET /api/health.
+GET /api/health POST /api/auth/login POST /api/telemetry/readings GET /api/telemetry/live GET /api/telemetry/history
+GET /api/devices POST /api/devices/{id}/command GET /api/analytics/load GET /api/forecast GET /api/anomalies POST
+/api/optimization/run GET /api/savings/verified
+
+
+========================================================================
+SOURCE PDF PAGE 24
+========================================================================
+
+23 — API RESPONSE STANDARD
+Success
+Use { success, data, meta } consistently.
+Errors
+Return HTTP status, machine-readable error code, message and validation details.
+Validation
+Validate body, query parameters and route IDs.
+Pagination
+Paginate large lists.
+Time
+Return ISO timestamps and explicitly define timezone handling.
+
+
+========================================================================
+SOURCE PDF PAGE 25
+========================================================================
+
+24 — DATABASE ARCHITECTURE
+InfluxDB
+Use for high-frequency time-series telemetry when supported.
+PostgreSQL
+Use for users, sites, zones, devices, tariffs, alerts, recommendations, actions, reports and audit data.
+Repository abstraction
+Keep telemetry access behind a repository interface so the time-series implementation can evolve.
+MVP fallback
+A PostgreSQL time-series-friendly implementation is acceptable if operating two databases is too heavy, but
+the architecture must remain compatible with the reference direction.
+
+
+========================================================================
+SOURCE PDF PAGE 26
+========================================================================
+
+25 — DATABASE MODELS
+User
+id, name, email, passwordHash, role, createdAt.
+Site
+id, name, timezone, tariffId, metadata.
+Zone
+id, siteId, name, occupancySchedule.
+Device
+id, zoneId, type, ratedPower, controllable, status.
+Reading
+deviceId, timestamp, powerKw, energyKwh, voltage, current, quality.
+Alert
+type, severity, status, sourceId, evidence, timestamps.
+Recommendation
+priority, action, reason, estimatedImpact, status.
+Action
+recommendationId, actor, command, result, timestamp.
+Tariff
+currency, rate, peakRules, effectivePeriod.
+
+
+========================================================================
+SOURCE PDF PAGE 27
+========================================================================
+
+26 — TELEMETRY DATA PIPELINE
+Stage 1
+ESP32/smart meter senses voltage/current/power.
+Stage 2
+MQTT/HTTP sends telemetry.
+Stage 3
+FastAPI authenticates and validates.
+Stage 4
+Data is cleaned and quality-tagged.
+Stage 5
+Time-series storage persists the reading.
+Stage 6
+Feature engine prepares ML inputs.
+Stage 7
+Analytics/ML/optimization consume the data.
+Stage 8
+Fluxora UI presents results and actions.
+ESP32 / Smart Meter ↓ MQTT / HTTP ↓ FastAPI ingestion ↓ Authentication + schema validation ↓ Cleaning + quality flags
+↓ InfluxDB / time-series repository ↓ Feature engineering ↓ Forecast + anomaly + optimization ↓ Recommendation ↓
+Fluxora UI / approved action ↓ Post-action telemetry ↓ Savings verification ↓ Feedback / model monitoring
+
+
+========================================================================
+SOURCE PDF PAGE 28
+========================================================================
+
+27 — TEN-STAGE OPERATIONAL FLOW
+1 Sensor Data
+ESP32/meters stream kW and power-factor information.
+2 Data Cleaning
+Null handling, smoothing, validation and outlier filtering.
+3 Feature Engineering
+Time-of-day, occupancy, temperature and load features.
+4 ML Models
+Forecasting and baseline models process features.
+5 Prediction & Anomaly
+Forecast demand and flag abnormal behavior.
+6 Optimization Engine
+Schedule flexible loads, battery and EV using solar/tariff constraints.
+7 Recommendation
+Generate a prioritized prescriptive alert.
+8 User/Automated Action
+Operator or approved BMS/relay executes the action.
+9 Measure Savings
+Compare actual consumption/cost against baseline.
+10 Feedback
+Use outcomes to improve thresholds/models.
+STAGE
+WHAT MUST HAPPEN
+1 Sense
+Read energy telemetry from ESP32/meters.
+2 Clean
+Validate, smooth and quality-tag data.
+3 Features
+Create temporal, occupancy, weather and load features.
+4 Learn
+Run forecasting/baseline models.
+5 Detect
+Identify peak risk and anomalies.
+6 Optimize
+Solve constrained load/battery/EV scheduling.
+7 Recommend
+Create prioritized prescriptive action.
+8 Act
+User/BMS executes approved action.
+9 Measure
+Compare actual result with baseline.
+10 Feedback
+Update model/threshold understanding from ground truth.
+
+
+========================================================================
+SOURCE PDF PAGE 29
+========================================================================
+
+28 — OPTIMIZATION ENGINE
+Goal
+Minimize cost and/or peak demand while satisfying operating constraints.
+Flexible loads
+EV charging, battery dispatch, selected HVAC settings and other configurable loads.
+Constraints
+Availability, completion deadlines, battery SOC, charge/discharge limits, comfort and safety limits.
+Method
+Use linear programming or another explainable constrained optimizer.
+Output
+Feasible schedule, expected impact, constraints and recommended actions.
+
+
+========================================================================
+SOURCE PDF PAGE 30
+========================================================================
+
+29 — TARIFF ENGINE
+Flat rate
+Support simple ₹/kWh or configured currency rates.
+Time-of-use
+Support peak/off-peak windows.
+Demand charge
+Keep the model extensible for demand-charge calculations.
+Versioning
+Savings calculations must identify which tariff version was used.
+Backend
+Tariff calculation belongs in the backend/service layer, not scattered through UI code.
+
+
+========================================================================
+SOURCE PDF PAGE 31
+========================================================================
+
+30 — RECOMMENDATION ENGINE
+Format
+Problem → evidence → action → timing → estimated impact → approval.
+Priority
+Combine magnitude, cost, risk, duration and confidence.
+Examples
+Shift EV charging, discharge battery during peak, reduce unnecessary HVAC, investigate phantom night load.
+Language
+Use potential/estimated saving before verification.
+Traceability
+Recommendation must reference the source data and model/rule version.
+
+
+========================================================================
+SOURCE PDF PAGE 32
+========================================================================
+
+31 — ACTION AND BMS
+MVP
+Require human approval for automated control.
+Command lifecycle
+Requested → sent → acknowledged → executed/failed.
+Simulator
+A command should change subsequent simulated readings.
+Future BMS
+Architecture should permit approved relay/BMS integration.
+Safety
+Enforce device constraints and authorization at the backend.
+
+
+========================================================================
+SOURCE PDF PAGE 33
+========================================================================
+
+32 — SAVINGS VERIFICATION
+Baseline
+Create comparable expected consumption before intervention.
+Actual
+Measure post-action consumption.
+Context
+Where possible, adjust for weather, occupancy and operating schedule.
+KPIs
+kWh saved, ₹ avoided, peak reduction and CO₂ impact.
+Labels
+Estimated, measured or verified must be distinct.
+
+
+========================================================================
+SOURCE PDF PAGE 34
+========================================================================
+
+33 — FEEDBACK LOOP
+Ground truth
+Record action and resulting telemetry.
+Model monitoring
+Compare predictions with actual values.
+Retraining
+Allow scheduled retraining after sufficient quality data.
+Threshold tuning
+Use false-positive/false-negative outcomes to improve anomaly rules.
+Versioning
+Store model/version metadata with outputs.
+
+
+========================================================================
+SOURCE PDF PAGE 35
+========================================================================
+
+34 — SIMULATION ENGINE
+Profiles
+HVAC, lighting, pumps, EV, solar, battery and other loads.
+Events
+Normal day, peak, AC spike, phantom night load, degradation, solar surplus and sensor offline.
+Physics
+Energy should accumulate from power over time.
+Control response
+Simulation must respond to commands rather than showing a static fake chart.
+Demo mode
+Clearly label simulation.
+
+
+========================================================================
+SOURCE PDF PAGE 36
+========================================================================
+
+35 — FRONTEND ARCHITECTURE
+Framework
+React.
+Pages
+Dashboard, Live Energy, Forecasts, Anomalies, Optimization, Devices, Renewable, Alerts, Savings, Reports,
+Settings.
+API layer
+Centralized service/query modules.
+State
+Separate server data from local UI state.
+Components
+Metric, Chart, Table, Alert, Recommendation, Device, Filter, Modal, Action drawer and Status badge.
+
+
+========================================================================
+SOURCE PDF PAGE 37
+========================================================================
+
+36 — FORECAST PAGE
+Chart
+Measured history + forecast curve.
+Peak
+Highlight predicted peak.
+Drivers
+Show important features/context where available.
+Confidence
+Show prediction interval only when supported.
+Action
+Link predicted peaks to optimization.
+
+
+========================================================================
+SOURCE PDF PAGE 38
+========================================================================
+
+37 — ANOMALY PAGE
+List
+Device, time, score, severity and status.
+Detail
+Observed vs baseline load.
+Evidence
+Show the time window and measurements behind the detection.
+Workflow
+Acknowledge → inspect → act → resolve → verify.
+No overclaiming
+Possible cause is not the same as confirmed equipment failure.
+
+
+========================================================================
+SOURCE PDF PAGE 39
+========================================================================
+
+38 — OPTIMIZATION PAGE
+Current state
+Load, solar, battery, EV and flexible-device status.
+Schedule
+Show proposed actions over time.
+Constraints
+Explain why actions can/cannot move.
+Impact
+Estimated cost, kWh and peak improvement.
+Approval
+Operator approves selected actions.
+
+
+========================================================================
+SOURCE PDF PAGE 40
+========================================================================
+
+39 — SAVINGS PAGE
+Baseline
+Show pre-action expected consumption.
+Intervention
+Show the action that was taken.
+Actual
+Show measured post-action consumption.
+KPIs
+Energy saved, cost avoided, peak reduction, CO₂ impact.
+Evidence
+Show comparison period and calculation method.
+
+
+========================================================================
+SOURCE PDF PAGE 41
+========================================================================
+
+40 — REPORTS
+Daily
+Consumption, peak, alerts, recommendations and actions.
+Monthly
+Energy, cost, renewable share, top devices and savings.
+Export
+CSV for data; PDF for executive summary.
+Status
+Every figure should identify measured, estimated or simulated status.
+
+
+========================================================================
+SOURCE PDF PAGE 42
+========================================================================
+
+41 — AUTHENTICATION AND ROLES
+Admin
+Users, devices, tariffs and configuration.
+Operator
+Alerts, recommendations and approved controls.
+Viewer
+Read-only dashboard and reports.
+Security
+Password hashing, secure token/session handling, authorization on control APIs.
+Audit
+Log administrative and control changes.
+
+
+========================================================================
+SOURCE PDF PAGE 43
+========================================================================
+
+42 — SECURITY AND SAFETY
+API security
+Validation, authorization, CORS policy, rate limiting where appropriate and safe errors.
+Secrets
+Environment variables only.
+Device security
+Authenticate gateways/devices.
+Controls
+Never permit uncontrolled model-driven commands.
+Audit
+Store actor, command, device and result.
+
+
+========================================================================
+SOURCE PDF PAGE 44
+========================================================================
+
+43 — OBSERVABILITY
+Health
+/api/health and dependency checks.
+Logs
+Structured logs with request IDs.
+Telemetry health
+Last-seen time and stale sensor detection.
+ML health
+Model version and inference error tracking.
+System alerts
+Raise alerts for ingestion/database/model failures.
+
+
+========================================================================
+SOURCE PDF PAGE 45
+========================================================================
+
+44 — TESTING
+Unit
+Tariff, aggregation, features, anomaly thresholds, forecast preprocessing and optimizer constraints.
+Integration
+Telemetry → database → analytics; forecast → recommendation; command → simulator → readings; action →
+savings.
+Frontend
+Navigation, filters, charts, error states and approvals.
+Scenario
+Run all simulator scenarios deterministically.
+
+
+========================================================================
+SOURCE PDF PAGE 46
+========================================================================
+
+45 — PERFORMANCE
+Telemetry
+Use efficient time-series storage and retention/aggregation strategies.
+API
+Paginate and aggregate large ranges server-side.
+Charts
+Downsample long time ranges.
+ML
+Cache or schedule expensive inference where appropriate.
+Streaming
+Use WebSockets/SSE only where real-time behavior provides value.
+
+
+========================================================================
+SOURCE PDF PAGE 47
+========================================================================
+
+46 — DEPLOYMENT
+Frontend
+Deploy React build.
+Backend
+Deploy FastAPI with production configuration.
+Database
+Managed PostgreSQL and optionally managed InfluxDB.
+ML
+Run inside FastAPI initially or separate later.
+Environment
+Document database URLs, auth secrets, API URLs, MQTT settings and model paths.
+
+
+========================================================================
+SOURCE PDF PAGE 48
+========================================================================
+
+47 — README AND REPOSITORY
+README
+Architecture, setup, environment variables, database initialization, seed data, frontend/backend commands,
+API docs, simulator, ML, tests and deployment.
+Git
+Main branch for stable code; feature branches for development.
+Documentation
+Include architecture diagram and end-to-end data flow.
+Limitations
+Explicitly list simulated hardware and estimated results.
+
+
+========================================================================
+SOURCE PDF PAGE 49
+========================================================================
+
+48 — HACKATHON DEMO FLOW
+1
+Open Fluxora dashboard and introduce the headline.
+2
+Show live load, forecast, solar and projected saving.
+3
+Trigger peak/anomaly scenario.
+4
+Open anomaly and show evidence.
+5
+Open AI Advisor/recommendation.
+6
+Run optimization and show proposed schedule.
+7
+Approve simulated action.
+8
+Show changed telemetry.
+9
+Open Savings and compare against baseline.
+10
+Close with verified/estimated impact.
+
+
+========================================================================
+SOURCE PDF PAGE 50
+========================================================================
+
+49 — QUALITY GATE
+Reject
+Fake charts, dead buttons, placeholder text, unexplained metrics, unlabeled simulation, excessive AI effects,
+disconnected backend and frontend.
+Accept
+Every important number has a source; every detection has evidence; every recommendation has an action
+path; every action is logged; savings can be measured.
+Technical standard
+The system must demonstrate the complete operational workflow rather than only a visual prototype.
+
+
+========================================================================
+SOURCE PDF PAGE 51
+========================================================================
+
+50 — FINAL MASTER PROMPT
+Build instruction
+Build Fluxora as a complete full-stack Energy Management and Optimization System for PS08. Use React for
+the executive dashboard and Python FastAPI for the backend. Implement ESP32/smart-meter-ready telemetry
+ingestion over MQTT/HTTP, time-series storage, PostgreSQL application data, data cleaning, feature
+engineering, forecasting, Isolation Forest anomaly detection, optimization, recommendations, action
+approval, savings verification, feedback, reports, authentication, simulation and deployment.
+Mandatory workflow
+Implement: Sensor Data → Data Cleaning → Feature Engineering → ML Models → Prediction & Anomaly
+Detection → Optimization Engine → Recommendation → User/Automated Action → Measure Savings →
+Feedback to Model.
+Design
+Use Fluxora and the headline “Smarter Energy for a Sustainable Tomorrow”. Do not make the UI look
+AI-generated. Avoid excessive neon, glassmorphism, decorative AI graphics, meaningless gradients and
+animation.
+Truthfulness
+Clearly label simulated data, forecasts and estimated savings. Never fabricate live telemetry, model accuracy
+or measured deployment results.
+Completion
+Do not declare the project complete until frontend, FastAPI backend, database, simulator, ML, optimization,
+alerts, action logging and savings verification work together end-to-end.
+
+
+========================================================================
+SOURCE PDF PAGE 52
+========================================================================
+
+APPENDIX A — TELEMETRY PAYLOAD
+This appendix is part of the implementation contract.
+POST /api/telemetry/readings { "deviceId": "hvac-01", "timestamp": "2026-10-02T18:00:00Z", "powerKw": 42.5,
+"voltage": 230, "current": 185, "powerFactor": 0.94 } The backend must validate the device, timestamp, units and
+numeric ranges before persistence.
+
+
+========================================================================
+SOURCE PDF PAGE 53
+========================================================================
+
+APPENDIX B — FORECAST OUTPUT
+This appendix is part of the implementation contract.
+{ "model": "xgboost", "version": "forecast-v1", "horizonHours": 24, "points": [
+{"timestamp":"2026-10-03T00:00:00Z","predictedKw":210.4} ] } Forecast values must never be silently mixed into
+measured telemetry.
+
+
+========================================================================
+SOURCE PDF PAGE 54
+========================================================================
+
+APPENDIX C — ANOMALY OUTPUT
+This appendix is part of the implementation contract.
+{ "deviceId": "hvac-01", "score": 0.91, "severity": "high", "detectedAt": "2026-10-02T18:15:00Z", "evidence": {
+"baselineKw": 28.1, "observedKw": 44.8, "durationMinutes": 18 } }
+
+
+========================================================================
+SOURCE PDF PAGE 55
+========================================================================
+
+APPENDIX D — OPTIMIZATION OUTPUT
+This appendix is part of the implementation contract.
+{ "objective": "minimize_cost_and_peak", "actions": [
+{"deviceId":"ev-01","start":"21:00","end":"23:00","targetKwh":40},
+{"deviceId":"battery-01","action":"discharge","energyKwh":80} ], "estimatedImpact": { "costAvoided": 8420,
+"peakReductionKw": 32 } } The optimizer must also return constraints/assumptions used.
+
+
+========================================================================
+SOURCE PDF PAGE 56
+========================================================================
+
+APPENDIX E — SAVINGS OUTPUT
+This appendix is part of the implementation contract.
+{ "status": "estimated", "baselineKwh": 1200, "actualKwh": 1080, "savingKwh": 120, "costAvoided": 1950, "method":
+"comparable_period_baseline" } Change status to verified only when the verification criteria are satisfied.
+
+
+========================================================================
+SOURCE PDF PAGE 57
+========================================================================
+
+APPENDIX F — FINAL DEFINITION OF DONE
+This appendix is part of the implementation contract.
+Fluxora is complete only when: 1. Telemetry enters FastAPI and is stored. 2. Data cleaning and quality handling run.
+3. Features are generated. 4. Forecasting works. 5. Anomaly detection works. 6. Optimization produces constrained
+recommendations. 7. Recommendations can be approved. 8. Simulator/device layer responds to actions. 9. Post-action
+telemetry is collected. 10. Savings are calculated against a baseline. 11. Dashboard, alerts, forecasts, optimization
+and savings pages use backend data. 12. Tests cover critical logic. 13. Deployment and README instructions work. 14.
+Simulated values are clearly labeled. 15. The product uses Fluxora branding and the required headline.
